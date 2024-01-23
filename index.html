@@ -10,39 +10,85 @@
 <body>
     <div class="cont">
         <h1>BMI Calculator</h1>
-        <input type="number" name="" id="weight" placeholder="Weight (kg)">
-        <input type="number" name="" id="height" placeholder="Height (cm)">
-        <div class="btns">
+        <div id="ins">
+            <input type="number" name="" id="weight" placeholder="Weight (kg)">
+            <input type="number" name="" id="height" placeholder="Height (cm)">
+        </div>
+        <div id="btn">
             <button onclick="calc();">calculate</button>
             <button onclick="clr();">clear</button>
         </div>
         <h2 id="result"></h2>
     </div>
     <style>
+        * {
+            color: white;
+        }
+
         .cont {
-            background-color: #4444aa;
+            background-color: #34349a;
             border-radius: 25px;
-            height: 250px;
-            width: 300px;
+            height: 350px;
+            width: 250px;
             padding: 10px;
             margin: 0 auto;
+            box-shadow: -5px 10px 30px black;
+        }
+
+        #ins,
+        #btn {
+            display: grid;
+            align-items: center;
+        }
+
+        #ins *,
+        #btn * {
+            margin-top: 10px;
+        }
+
+        #btn {
+            display: grid;
+            grid-template-columns: 10fr 8fr;
         }
 
         input {
+            padding: 5px;
+            margin: 0 auto;
             width: 80%;
             height: 30px;
-            border-radius: 15px;
-            background-color: #4444aa;
+            border-radius: 5px;
+            background-color: #34349a;
             border-color: #7777ff;
         }
 
         body {
-            background-color: #333388;
+            background-color: #28287a;
         }
 
         h1,
         h2 {
             text-align: center;
+        }
+
+        button {
+            padding: 5px;
+            margin: 0 auto;
+            /* width: 80%; */
+            height: 30px;
+            border-radius: 5px;
+            background-color: #34349a;
+            border-color: #7777ff;
+        }
+
+        /* https://stackoverflow.com/questions/23372903/hide-up-down-arrow-buttons-spinner-in-input-number-firefox-29 */
+        input[type=number]::-webkit-outer-spin-button,
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
         }
     </style>
     <script>
