@@ -131,7 +131,7 @@
 
             if (weight === 0 || height === 0) {
                 res.innerHTML = "hibás adat";
-                break;
+                return;
             }
 
             let b = bmi(weight, height);
