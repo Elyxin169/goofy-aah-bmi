@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UwU</title>
+</head>
+
+<body>
+    <div class="cont">
+        <h1>BMI Calculator</h1>
+        <input type="number" name="" id="weight" placeholder="Weight (kg)">
+        <input type="number" name="" id="height" placeholder="Height (cm)">
+        <div class="btns">
+            <button onclick="calc();">calculate</button>
+            <button onclick="clr();">clear</button>
+        </div>
+        <h2 id="result"></h2>
+    </div>
+    <style>
+        .cont {
+            background-color: #4444aa;
+            border-radius: 25px;
+            height: 250px;
+            width: 300px;
+            padding: 10px;
+            margin: 0 auto;
+        }
+
+        input {
+            width: 80%;
+            height: 30px;
+            border-radius: 15px;
+            background-color: #4444aa;
+            border-color: #7777ff;
+        }
+
+        body {
+            background-color: #333388;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+        }
+    </style>
+    <script>
+        const weightIn = document.getElementById("weight");
+        const heightIn = document.getElementById("height");
+        const res = document.getElementById("result");
+
+        const bmi = (weight, height) => weight / (height * height)
+
+        const calc = () => {
+            let weight = weightIn.value;
+            let height = heightIn.value / 100.;
+
+            let b = bmi(weight, height);
+            let cat = "asd";
+            if (b < 18.5)
+                cat = "underweight"
+            else if (b < 25) cat = "normal"
+            else if (b < 30) cat = "overweight"
+            else if (b < 35) cat = "obese"
+            else cat = "extremely obese"
+            res.innerHTML = `BMI: ${Math.round(b * 100) / 100}<br>Category: ${cat}`;
+        }
+
+        const clr = () => {
+            res.innerText = "";
+            weightIn.value = "";
+            heightIn.value = "";
+        }
+    </script>
+</body>
+
+</html>
