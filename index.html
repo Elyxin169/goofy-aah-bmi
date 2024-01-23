@@ -96,20 +96,31 @@
         const heightIn = document.getElementById("height");
         const res = document.getElementById("result");
 
+        // https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
+        const sleep = ms => new Promise(r => setTimeout(r, ms));
+
         const bmi = (weight, height) => weight / (height * height)
 
-        const calc = () => {
+        const calc = async () => {
             let weight = weightIn.value;
             let height = heightIn.value / 100.;
 
             let b = bmi(weight, height);
             let cat = "asd";
             if (b < 18.5)
-                cat = "underweight"
-            else if (b < 25) cat = "normal"
-            else if (b < 30) cat = "overweight"
-            else if (b < 35) cat = "obese"
-            else cat = "extremely obese"
+                cat = "underweight";
+            else if (b < 25) cat = "normal";
+            else if (b < 30) cat = "overweight";
+            else if (b < 35) cat = "obese";
+            else cat = "extremely obese";
+
+            res.innerHTML = ".";
+            await sleep(333);
+            res.innerHTML = "..";
+            await sleep(333);
+            res.innerHTML = "...";
+            await sleep(334);
+
             res.innerHTML = `BMI: ${Math.round(b * 100) / 100}<br>Category: ${cat}`;
         }
 
