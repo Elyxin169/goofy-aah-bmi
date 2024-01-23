@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UwU</title>
+</head>
+
+<body>
+    <div class="cont">
+        <h1>BMI Calculator</h1>
+        <div id="ins">
+            <input type="number" name="" id="weight" placeholder="Weight (kg)">
+            <input type="number" name="" id="height" placeholder="Height (cm)">
+        </div>
+        <div id="btn">
+            <button onclick="calc();">calculate</button>
+            <button onclick="clr();">clear</button>
+        </div>
+        <h2 id="result"></h2>
+    </div>
+    <style>
+        * {
+            color: white;
+        }
+
+        .cont {
+            background-color: #34349a;
+            border-radius: 25px;
+            height: 350px;
+            width: 250px;
+            padding: 10px;
+            margin: 0 auto;
+            box-shadow: -5px 10px 30px black;
+        }
+
+        #ins,
+        #btn {
+            display: grid;
+            align-items: center;
+        }
+
+        #ins *,
+        #btn * {
+            margin-top: 10px;
+        }
+
+        #btn {
+            display: grid;
+            grid-template-columns: 10fr 8fr;
+        }
+
+        input {
+            padding: 5px;
+            margin: 0 auto;
+            width: 80%;
+            height: 30px;
+            border-radius: 5px;
+            background-color: #34349a;
+            border-color: #7777ff;
+        }
+
+        body {
+            background-color: #28287a;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+        }
+
+        button {
+            padding: 5px;
+            margin: 0 auto;
+            /* width: 80%; */
+            height: 30px;
+            border-radius: 5px;
+            background-color: #34349a;
+            border-color: #7777ff;
+        }
+
+        /* https://stackoverflow.com/questions/23372903/hide-up-down-arrow-buttons-spinner-in-input-number-firefox-29 */
+        input[type=number]::-webkit-outer-spin-button,
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+    <script>
+        const weightIn = document.getElementById("weight");
+        const heightIn = document.getElementById("height");
+        const res = document.getElementById("result");
+
+        const bmi = (weight, height) => weight / (height * height)
+
+        const calc = () => {
+            let weight = weightIn.value;
+            let height = heightIn.value / 100.;
+
+            let b = bmi(weight, height);
+            let cat = "asd";
+            if (b < 18.5)
+                cat = "underweight"
+            else if (b < 25) cat = "normal"
+            else if (b < 30) cat = "overweight"
+            else if (b < 35) cat = "obese"
+            else cat = "extremely obese"
+            res.innerHTML = `BMI: ${Math.round(b * 100) / 100}<br>Category: ${cat}`;
+        }
+
+        const clr = () => {
+            res.innerText = "";
+            weightIn.value = "";
+            heightIn.value = "";
+        }
+    </script>
+</body>
+
+</html>
